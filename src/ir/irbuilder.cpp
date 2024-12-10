@@ -140,8 +140,20 @@ void ir::IrBuilder::visit(ast::unaryop_expr_syntax &node)
     // 创建新的寄存器存储结果
     auto dst = cur_func->new_reg(vartype::INT);
     
-    // 生成一元运算指令
-    cur_block->push_back(std::make_shared<ir::unary_op_ins>(dst, rhs, node.op));
+    // 对于负号运算符，生成 0 - operand 的指令
+    if (node.op == unaryop::minus) {
+        auto zero = std::make_shared<ir::ir_constant>(0);
+        cur_block->push_back(std::make_shared<ir::binary_op_ins>(
+            dst,
+            zero,
+            rhs,
+            binop::minus
+        ));
+    }
+    // 其他一元运算符的处理...
+    else {
+        cur_block->push_back(std::make_shared<ir::unary_op_ins>(dst, rhs, node.op));
+    }
     
     // 传递结果
     this->pass_value = dst;
