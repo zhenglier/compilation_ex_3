@@ -1,0 +1,3 @@
+/home/zhenglier/Desktop/com_ex/compilation_ex_3/build/CMakeFiles/compiler.dir
+/home/zhenglier/Desktop/com_ex/compilation_ex_3/build/CMakeFiles/edit_cache.dir
+/home/zhenglier/Desktop/com_ex/compilation_ex_3/build/CMakeFiles/rebuild_cache.dir
